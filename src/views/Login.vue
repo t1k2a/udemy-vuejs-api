@@ -1,16 +1,16 @@
 <template>
   <div>
     <h2>ログイン</h2>
-    <label for="name">eメール：</label>
+    <label for="email">Email：</label>
     <input
-      id="name"
+      id="email"
       type="email"
       v-model="email"
     >
     <br><br>
-    <label for="name">パスワード：</label>
+    <label for="password">パスワード：</label>
     <input
-      id="name"
+      id="password"
       type="password"
       v-model="password"
     >
@@ -24,14 +24,18 @@ export default {
   data() {
     return {
       email: '',
-      password: '',
+      password: ''
     };
   },
   methods: {
-      login() {
-          
-      }
+    login() {
+      this.$store.dispatch('login', {
+        email: this.email,
+        password: this.password
+      });
+      this.email = '';
+      this.password = '';
+    }
   }
 };
 </script>
-
